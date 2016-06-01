@@ -3,7 +3,7 @@ package com.jimdb;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotEqualOperation<T> implements Operation<T> {
+public class NotEqualOperation implements Operation {
 	
 	private int lastRowId;
 
@@ -29,6 +29,11 @@ public class NotEqualOperation<T> implements Operation<T> {
 	}
 
 	public List eval(Table table) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Integer> eval(BSTFilterNode bstFilterNode) {
 		// TODO Auto-generated method stub
 		return null;
 	}

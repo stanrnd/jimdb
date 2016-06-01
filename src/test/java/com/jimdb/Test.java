@@ -15,8 +15,12 @@ public class Test {
 		Table<Employee> table = new Table<Employee>(100, new IndexConfig("department", "address"));
 		fillData(table);
 		
-		List<Employee> employees = table.find(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), Op.OR, new Filter("department", Op.EQ, "QA")), Op.AND, new Filter("address", Op.EQ, "Bangalore")));
+		//List<Employee> employees = table.find(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), Op.OR, new Filter("department", Op.EQ, "QA")), Op.AND, new Filter("address", Op.EQ, "Bangalore")));
 		
+		
+		long start = System.currentTimeMillis();
+		List<Employee> employees = table.find(new Filter("department", Op.EQ, "IT"));
+		System.out.println();
 		for(Employee employee:employees) {
 			System.out.println(employee);
 		}

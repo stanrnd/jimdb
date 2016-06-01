@@ -97,15 +97,18 @@ public class Table<T> {
 		return ++lastRowId;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<T> find(Filter filter) {
 		BSTFilterNode bstFilterNode = new BSTFilterNode();
 		OperationParam operationParam = new OperationParam(lastRowId, maxNoOfRows, indexConfig, data, dataMapping, emptyIndexes);
 		bstFilterNode(filter, bstFilterNode, operationParam);
 		BSTFilterNode resultBSTFilterNode = bstFilterNode.process();
-		List<Integer> results = resultBSTFilterNode.getResult();
-		
-		System.out.println(bstFilterNode);
-		return null;
+		List<Integer> resultIndexes = resultBSTFilterNode.getResult();
+		List<T> results = new ArrayList<T>();
+		for(Integer index:resultIndexes) {
+			results.add((T) data[index]);
+		}
+		return results;
 	}
 	
 	private void bstFilterNode(Filter filter, BSTFilterNode bstFilterNode, OperationParam operationParam) {

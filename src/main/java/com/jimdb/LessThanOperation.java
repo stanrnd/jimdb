@@ -33,4 +33,9 @@ public class LessThanOperation implements Operation {
 		return null;
 	}
 
+	public List<Integer> eval(BSTFilterNode bstFilterNode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

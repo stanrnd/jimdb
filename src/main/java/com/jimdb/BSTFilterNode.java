@@ -76,14 +76,9 @@ public class BSTFilterNode {
 	
 	public BSTFilterNode process() {
 		if(leftOperand != null && rightOperand != null) {
-			BSTFilterNode leftFilter = leftOperand.process();
-			BSTFilterNode rightFilter = rightOperand.process();
-			Operation operation = OpertionFactory.getOperation(this.operator);
-			
-			
-			System.out.println(this.operator);
+			leftOperand.process();
+			rightOperand.process();
 		}
-		System.out.println(column + " " + operator + " " + value);
 		Operation operation = OpertionFactory.getOperation(this.operator);
 		this.result = operation.eval(this);
 		return this;
