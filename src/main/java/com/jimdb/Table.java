@@ -8,6 +8,12 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.TreeMap;
 
+import com.jimdb.select.BSTFilterNode;
+import com.jimdb.select.Filter;
+import com.jimdb.select.Operation;
+import com.jimdb.select.OperationFactory;
+import com.jimdb.select.OperationParam;
+
 public class Table<T> {
 	
 	private int lastRowId;
@@ -32,18 +38,22 @@ public class Table<T> {
 		}
 	}
 	
-	public void insert(T row) throws Exception {
-		int emptyRowId = findEmptyRowId();
-		data[emptyRowId] = row;
-		for(String col:indexConfig.getColIndexes()) {
-			Field field = row.getClass().getDeclaredField(col);
-			field.setAccessible(true);
-	        Object value = field.get(row);
-	        List<Integer> rows = dataMapping.get(col).get(value);
-			if(rows == null) {
-				dataMapping.get(col).put(value, new ArrayList<Integer>());
+	public void insert(T row) {
+		try {
+			int emptyRowId = findEmptyRowId();
+			data[emptyRowId] = row;
+			for(String col:indexConfig.getColIndexes()) {
+				Field field = row.getClass().getDeclaredField(col);
+				field.setAccessible(true);
+		        Object value = field.get(row);
+		        List<Integer> rows = dataMapping.get(col).get(value);
+				if(rows == null) {
+					dataMapping.get(col).put(value, new ArrayList<Integer>());
+				}
+				dataMapping.get(col).get(value).add(emptyRowId);
 			}
-			dataMapping.get(col).get(value).add(emptyRowId);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -51,41 +61,6 @@ public class Table<T> {
 		
 		return null;
 	}
-	
-	private List<Integer> and(List<Integer> list1, List<Integer> list2) {
-		int[] tempData = new int[lastRowId+1];
-		for(int i=0;i<list1.size();i++) {
-			tempData[list1.get(i)]++;
-		}
-		for(int i=0;i<list2.size();i++) {
-			tempData[list2.get(i)]++;
-		}
-		List<Integer> list3 = new ArrayList<Integer>();
-		for(int i=0;i<tempData.length;i++) {
-			if(tempData[i] == 2) {
-				list3.add(i);
-			}
-		}
-		return list3;
-	}
-	
-	private List<Integer> or(List<Integer> list1, List<Integer> list2) {
-		int[] tempData = new int[lastRowId+1];
-		for(int i=0;i<list1.size();i++) {
-			tempData[list1.get(i)]++;
-		}
-		for(int i=0;i<list2.size();i++) {
-			tempData[list2.get(i)]++;
-		}
-		List<Integer> list3 = new ArrayList<Integer>();
-		for(int i=0;i<tempData.length;i++) {
-			if(tempData[i] > 0) {
-				list3.add(i);
-			}
-		}
-		return list3;
-	}
-	
 	
 	private int findEmptyRowId() {
 		if(!emptyIndexes.isEmpty()) {
@@ -100,10 +75,9 @@ public class Table<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> find(Filter filter) {
 		BSTFilterNode bstFilterNode = new BSTFilterNode();
-		OperationParam operationParam = new OperationParam(lastRowId, maxNoOfRows, indexConfig, data, dataMapping, emptyIndexes);
-		bstFilterNode(filter, bstFilterNode, operationParam);
-		BSTFilterNode resultBSTFilterNode = bstFilterNode.process();
-		List<Integer> resultIndexes = resultBSTFilterNode.getResult();
+		OperationFactory operationFactory = new OperationFactory(new OperationParam(lastRowId, maxNoOfRows, indexConfig, data, dataMapping, emptyIndexes));
+		bstFilterNode(filter, bstFilterNode, operationFactory);
+		List<Integer> resultIndexes = bstFilterNode.process();
 		List<T> results = new ArrayList<T>();
 		for(Integer index:resultIndexes) {
 			results.add((T) data[index]);
@@ -111,15 +85,15 @@ public class Table<T> {
 		return results;
 	}
 	
-	private void bstFilterNode(Filter filter, BSTFilterNode bstFilterNode, OperationParam operationParam) {
-		bstFilterNode.setOperationParam(operationParam);
-		bstFilterNode.setOperator(filter.getOperator());
+	private void bstFilterNode(Filter filter, BSTFilterNode bstFilterNode, OperationFactory operationFactory) {
+		Operation operation = operationFactory.getOperation(filter.getOperator());
+		bstFilterNode.setOperation(operation);
 		if(filter.getLeftOperand() != null && filter.getRightOperand() != null) {
 			bstFilterNode.setLeftOperand(new BSTFilterNode());
 			bstFilterNode.setRightOperand(new BSTFilterNode());
 			
-			bstFilterNode(filter.getLeftOperand(), bstFilterNode.getLeftOperand(), operationParam);
-			bstFilterNode(filter.getRightOperand(), bstFilterNode.getRightOperand(), operationParam);
+			bstFilterNode(filter.getLeftOperand(), bstFilterNode.getLeftOperand(), operationFactory);
+			bstFilterNode(filter.getRightOperand(), bstFilterNode.getRightOperand(), operationFactory);
 		}
 		if(filter.getColumn() != null && filter.getValue() != null) {
 			bstFilterNode.setColumn(filter.getColumn());

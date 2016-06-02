@@ -4,7 +4,7 @@
 
   <groupId>com.jimdb</groupId>
   <artifactId>jimdb</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
   <name>jimdb</name>
@@ -18,7 +18,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.4</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
