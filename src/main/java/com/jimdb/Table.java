@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.TreeMap;
 
+import com.jimdb.ds.JimdbTreeMap;
 import com.jimdb.select.BSTFilterNode;
 import com.jimdb.select.Filter;
 import com.jimdb.select.Operation;
@@ -24,7 +25,7 @@ public class Table<T> {
 	
 	private Object[] data;
 	
-	private Map<String, TreeMap<Object, List<Integer>>> dataMapping;
+	private Map<String, JimdbTreeMap<Object, List<Integer>>> dataMapping;
 	
 	private Stack<Integer> emptyIndexes;
 	
@@ -32,9 +33,9 @@ public class Table<T> {
 		this.data = new Object[maxNoOfRows];
 		this.indexConfig = indexConfig;
 		this.emptyIndexes = new Stack<Integer>();
-		this.dataMapping = new HashMap<String, TreeMap<Object,List<Integer>>>();
+		this.dataMapping = new HashMap<String, JimdbTreeMap<Object,List<Integer>>>();
 		for(String col:indexConfig.getColIndexes()) {
-			dataMapping.put(col, new TreeMap<Object, List<Integer>>());
+			dataMapping.put(col, new JimdbTreeMap<Object, List<Integer>>());
 		}
 	}
 	

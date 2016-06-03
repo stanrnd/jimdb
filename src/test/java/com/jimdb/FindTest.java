@@ -28,7 +28,7 @@ public class FindTest {
 	
 	@Test
 	public void testFindMethod() {
-		List<Employee> employees = table.find(new Filter(new Filter("address", Op.EQ, "Bangalore"), Op.AND, new Filter(new Filter("department", Op.EQ, "IT"), Op.OR, new Filter("department", Op.EQ, "QA"))));
+		List<Employee> employees = table.find(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), Op.OR, new Filter("department", Op.EQ, "QA")), Op.AND, new Filter("address", Op.EQ, "Bangalore")));
 		for(Employee employee:employees) {
 			System.out.println(employee);
 		}

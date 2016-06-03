@@ -6,6 +6,7 @@ import java.util.Stack;
 import java.util.TreeMap;
 
 import com.jimdb.IndexConfig;
+import com.jimdb.ds.JimdbTreeMap;
 
 public class OperationParam {
 	
@@ -17,12 +18,12 @@ public class OperationParam {
 	
 	private Object[] data;
 	
-	private Map<String, TreeMap<Object, List<Integer>>> dataMapping;
+	private Map<String, JimdbTreeMap<Object, List<Integer>>> dataMapping;
 	
 	private Stack<Integer> emptyIndexes;
 
 	public OperationParam(int lastRowId, int maxNoOfRows, IndexConfig indexConfig, Object[] data,
-			Map<String, TreeMap<Object, List<Integer>>> dataMapping, Stack<Integer> emptyIndexes) {
+			Map<String, JimdbTreeMap<Object, List<Integer>>> dataMapping, Stack<Integer> emptyIndexes) {
 		this.lastRowId = lastRowId;
 		this.maxNoOfRows = maxNoOfRows;
 		this.indexConfig = indexConfig;
@@ -63,11 +64,11 @@ public class OperationParam {
 		this.data = data;
 	}
 
-	public Map<String, TreeMap<Object, List<Integer>>> getDataMapping() {
+	public Map<String, JimdbTreeMap<Object, List<Integer>>> getDataMapping() {
 		return dataMapping;
 	}
 
-	public void setDataMapping(Map<String, TreeMap<Object, List<Integer>>> dataMapping) {
+	public void setDataMapping(Map<String, JimdbTreeMap<Object, List<Integer>>> dataMapping) {
 		this.dataMapping = dataMapping;
 	}
 
