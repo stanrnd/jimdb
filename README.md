@@ -75,5 +75,6 @@ List<Employee> employees = table.find(new Filter(new Filter(new Filter("departme
 ```
 
 > **Note:**
-> Currently Table will support for only few operators and the remaining operators are under development. Yo can expect soon.
+> - Full example you can find from the above src/test/java/com/jimdb
+> - Currently Table will support only for few operations and the remaining operations are under development. Yo can expect soon.
 
