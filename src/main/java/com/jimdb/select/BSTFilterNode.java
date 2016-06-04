@@ -6,7 +6,7 @@ import com.jimdb.select.Operation;
 
 public class BSTFilterNode {
 
-	private String column;
+	private String field;
 
 	private Object value;
 
@@ -16,12 +16,12 @@ public class BSTFilterNode {
 	
 	private Operation operation;
 
-	public String getColumn() {
-		return column;
+	public String getField() {
+		return field;
 	}
 
-	public void setColumn(String column) {
-		this.column = column;
+	public void setField(String field) {
+		this.field = field;
 	}
 
 	public Object getValue() {
@@ -62,7 +62,7 @@ public class BSTFilterNode {
 			List<Integer> rightList = rightOperand.process();
 			return operation.eval(leftList, rightList);
 		}
-		return operation.eval(column, value);
+		return operation.eval(field, value);
 	}
 	
 }

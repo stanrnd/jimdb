@@ -34,17 +34,6 @@ public class OperationFactory {
 		case GTE: {
 			break;
 		}
-		case AND: {
-			operation = new AndOperation(operationParam);
-			break;
-		}
-		case OR: {
-			operation = new OrOperation(operationParam);
-			break;
-		}
-		case NOT: {
-			break;
-		}
 		case CONTAINS: {
 			break;
 		}
@@ -61,4 +50,22 @@ public class OperationFactory {
 		return operation;
 	}
 
+	public Operation getOperation(LogOp operator) {
+		Operation operation = null;
+		switch (operator) {
+		case AND: {
+			operation = new AndOperation(operationParam);
+			break;
+		}
+		case OR: {
+			operation = new OrOperation(operationParam);
+			break;
+		}
+		case NOT: {
+			break;
+		}
+		}
+		return operation;
+	}
+	
 }

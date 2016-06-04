@@ -6,24 +6,26 @@ public class Filter {
 	
 	private Op operator;
 	
-	private String column;
+	private String field;
 	
 	private Object value;
+	
+	private LogOp logicalOperator;
 	
 	private Filter leftOperand;
 	
 	private Filter rightOperand;
 	
-	public Filter(String column, Op operator, Object value) {
-		this.column = column;
+	public Filter(String field, Op operator, Object value) {
+		this.field = field;
 		this.operator = operator;
 		this.value = value;
 		
 	}
 	
-	public Filter(Filter leftOperand, Op operator, Filter rightOperand) {
+	public Filter(Filter leftOperand, LogOp logicalOperator, Filter rightOperand) {
 		this.leftOperand = leftOperand;
-		this.operator = operator;
+		this.logicalOperator = logicalOperator;
 		this.rightOperand = rightOperand;
 	}
 
@@ -31,12 +33,16 @@ public class Filter {
 		return operator;
 	}
 
-	public String getColumn() {
-		return column;
+	public String getField() {
+		return field;
 	}
 
 	public Object getValue() {
 		return value;
+	}
+
+	public LogOp getLogicalOperator() {
+		return logicalOperator;
 	}
 
 	public Filter getLeftOperand() {

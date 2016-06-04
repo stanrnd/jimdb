@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.jimdb.select.Filter;
+import com.jimdb.select.LogOp;
 import com.jimdb.select.Op;
 
 public class FindTest {
@@ -28,7 +29,7 @@ public class FindTest {
 	
 	@Test
 	public void testFindMethod() {
-		List<Employee> employees = table.find(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), Op.OR, new Filter("department", Op.EQ, "QA")), Op.AND, new Filter("address", Op.EQ, "Bangalore")));
+		List<Employee> employees = table.find(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), LogOp.OR, new Filter("department", Op.EQ, "QA")), LogOp.AND, new Filter("address", Op.EQ, "Bangalore")));
 		for(Employee employee:employees) {
 			System.out.println(employee);
 		}

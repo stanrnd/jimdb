@@ -87,18 +87,25 @@ public class Table<T> {
 	}
 	
 	private void bstFilterNode(Filter filter, BSTFilterNode bstFilterNode, OperationFactory operationFactory) {
-		Operation operation = operationFactory.getOperation(filter.getOperator());
-		bstFilterNode.setOperation(operation);
-		if(filter.getLeftOperand() != null && filter.getRightOperand() != null) {
+		if(filter.getOperator() != null) {
+			if(filter.getField() == null || filter.getValue() == null) {
+				throw new NullPointerException("Field name or Field value or both cannot be null.");
+			}
+			bstFilterNode.setOperation(operationFactory.getOperation(filter.getOperator()));
+			bstFilterNode.setField(filter.getField());
+			bstFilterNode.setValue(filter.getValue());
+		} else if(filter.getLogicalOperator() != null) {
+			if(filter.getLeftOperand() == null || filter.getRightOperand() == null) {
+				throw new NullPointerException("Left operand or Right operand or both filters cannot be null.");
+			}
+			bstFilterNode.setOperation(operationFactory.getOperation(filter.getLogicalOperator()));
 			bstFilterNode.setLeftOperand(new BSTFilterNode());
 			bstFilterNode.setRightOperand(new BSTFilterNode());
 			
 			bstFilterNode(filter.getLeftOperand(), bstFilterNode.getLeftOperand(), operationFactory);
 			bstFilterNode(filter.getRightOperand(), bstFilterNode.getRightOperand(), operationFactory);
-		}
-		if(filter.getColumn() != null && filter.getValue() != null) {
-			bstFilterNode.setColumn(filter.getColumn());
-			bstFilterNode.setValue(filter.getValue());
+		} else {
+			throw new NullPointerException("Operator cannot be null.");
 		}
 	}
 	
