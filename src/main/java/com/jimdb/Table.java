@@ -39,14 +39,14 @@ public class Table<T> {
 		}
 	}
 	
-	public void insert(T row) {
+	public void insert(T bean) {
 		try {
 			int emptyRowId = findEmptyRowId();
-			data[emptyRowId] = row;
+			data[emptyRowId] = bean;
 			for(String col:indexConfig.getColIndexes()) {
-				Field field = row.getClass().getDeclaredField(col);
+				Field field = bean.getClass().getDeclaredField(col);
 				field.setAccessible(true);
-		        Object value = field.get(row);
+		        Object value = field.get(bean);
 		        List<Integer> rows = dataMapping.get(col).get(value);
 				if(rows == null) {
 					dataMapping.get(col).put(value, new ArrayList<Integer>());
@@ -55,6 +55,12 @@ public class Table<T> {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void insert(List<T> beans) {
+		for(T t:beans) {
+			insert(t);
 		}
 	}
 	
