@@ -15,7 +15,7 @@ public class FindTest {
 	
 	@BeforeClass
 	public static void init() {
-		table = new Table<Employee>(100, new IndexConfig("department", "address"));
+		table = new Table<Employee>(100, new IndexConfig("department", "address", "gender"));
 		table.insert(new Employee("eid02", "Alan", "male", 20000, "HR", "Bangalore", "alan@gmail.com"));
 		table.insert(new Employee("eid18", "Krish", "male", 10000, "IT", "Bangalore", "krish@gmail.com"));
 		table.insert(new Employee("eid16", "Shiny", "female", 60000, "QA", "Chennai", "shiny@gmail.com"));
@@ -29,10 +29,15 @@ public class FindTest {
 	
 	@Test
 	public void testFindMethod() {
+		
+		table.update(new Employee(34000, null, null), new Filter(new Filter(new Filter("department", Op.EQ, "IT"), LogOp.OR, new Filter("department", Op.EQ, "QA")), LogOp.AND, new Filter("address", Op.EQ, "Bangalore")));
+		
 		List<Employee> employees = table.find(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), LogOp.OR, new Filter("department", Op.EQ, "QA")), LogOp.AND, new Filter("address", Op.EQ, "Bangalore")));
 		for(Employee employee:employees) {
 			System.out.println(employee);
 		}
+		
+		//table.delete(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), LogOp.OR, new Filter("department", Op.EQ, "QA")), LogOp.AND, new Filter("address", Op.EQ, "Bangalore")));
 	}
 
 }

@@ -16,6 +16,12 @@ public class Employee {
 	
 	private String mailId;
 	
+	public Employee(float salary, String address, String mailId) {
+		this.salary = salary;
+		this.address = address;
+		this.mailId = mailId;
+	}
+	
 	public Employee(String id, String name, String gender, float salary, String department, String address, String mailId) {
 		this.id = id;
 		this.name = name;
