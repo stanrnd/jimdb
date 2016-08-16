@@ -5,9 +5,11 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.jimdb.select.Filter;
-import com.jimdb.select.LogOp;
-import com.jimdb.select.Op;
+import com.stanslab.jimdb.IndexConfig;
+import com.stanslab.jimdb.Table;
+import com.stanslab.jimdb.select.Filter;
+import com.stanslab.jimdb.select.LogOp;
+import com.stanslab.jimdb.select.Op;
 
 public class FindTest {
 	
