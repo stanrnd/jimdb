@@ -1,4 +1,4 @@
-package com.jimdb;
+package com.stanslab.jimdb;
 
 import java.util.List;
 
