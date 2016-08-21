@@ -3,6 +3,16 @@ JIMDB (Java In Memory DataBase)
 #### What is JIMDB? ####
 JIMDB is a lightweight Java In Memory DataBase where you can store any Java Bean. We can perform basic SQL operations like select, insert, update, delete and etc. JIMDB is specially designed for better performance than normal SQL databases and other in memory databases. Performance can be improved by creating indexes, efficient data structures and algorithms used. It can retrieve records at time complexity of 1, from millions of records. When we handle with millions of records, performance wise JIMDB will be a good replacement of other databases.
 
+#### Maven Dependency (Latest Version) ####
+
+```
+<dependency>
+	<groupId>com.stanslab.jimdb</groupId>
+	<artifactId>jimdb</artifactId>
+	<version>1.0</version>
+</dependency>
+```
+
 #### JIMDB Syntax with Example ####
 
 > **Note:**
@@ -75,7 +85,8 @@ List<T> list = table.find(new Filter(new Filter(<field 1>, Op.<any operator>, <v
 List<Employee> employees = table.find(new Filter(new Filter(new Filter("department", Op.EQ, "IT"), LogOp.OR, new Filter("department", Op.EQ, "QA")), LogOp.AND, new Filter("address", Op.EQ, "Bangalore")));
 ```
 
-> **Note:**
-> - Full example you can find from the above src/test/java/com/jimdb path
-> - Currently Table will support only for few operations and the remaining operations are under development. Yo can expect soon.
+> **Future Release:**
+> - Auto Save (save the data into disk)
 
+> **Note:**
+> - Full example you can find from the above src/test/java/com/jimdb path.
