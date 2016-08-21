@@ -1,7 +1,7 @@
 JIMDB (Java In Memory DataBase)
 -------------------------------
 #### What is JIMDB? ####
-JIMDB is a lightweight Java In Memory DataBase which can store any Java Bean. We can do any basic sql database operations like select, insert, update and delete. JIMDB especially developed for better performance than normal sql database. Performance improved by creating indexes, efficient data structure used to store the beans and storing the beans in heap memory. When we handle with more than millions of records, JIMDB will be good replacement in performance wise. 
+JIMDB is a lightweight Java In Memory DataBase where you can store any Java Bean. We can perform basic SQL operations like select, insert, update, delete and etc. JIMDB is specially designed for better performance than normal SQL databases and other in memory databases. Performance can be improved by creating indexes, efficient data structures and algorithms used. It can retrieve records at time complexity of 1, from millions of records. When we handle with millions of records, performance wise JIMDB will be a good replacement of other databases.
 
 #### JIMDB Syntax with Example ####
 
