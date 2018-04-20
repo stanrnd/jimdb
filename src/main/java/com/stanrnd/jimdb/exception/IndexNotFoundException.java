@@ -1,4 +1,4 @@
-package com.stanslab.jimdb.exception;
+package com.stanrnd.jimdb.exception;
 
 public class IndexNotFoundException extends RuntimeException {
 

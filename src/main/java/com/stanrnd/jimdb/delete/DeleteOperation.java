@@ -1,4 +1,4 @@
-package com.stanslab.jimdb.delete;
+package com.stanrnd.jimdb.delete;
 
 public class DeleteOperation {
 

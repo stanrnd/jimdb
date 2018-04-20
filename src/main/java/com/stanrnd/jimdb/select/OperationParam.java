@@ -1,12 +1,12 @@
-package com.stanslab.jimdb.select;
+package com.stanrnd.jimdb.select;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.TreeMap;
 
-import com.stanslab.jimdb.IndexConfig;
-import com.stanslab.jimdb.ds.JimdbTreeMap;
+import com.stanrnd.jimdb.IndexConfig;
+import com.stanrnd.jimdb.ds.JimdbTreeMap;
 
 public class OperationParam {
 	

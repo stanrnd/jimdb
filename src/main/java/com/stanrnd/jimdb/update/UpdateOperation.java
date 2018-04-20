@@ -1,4 +1,4 @@
-package com.stanslab.jimdb.update;
+package com.stanrnd.jimdb.update;
 
 public class UpdateOperation {
 

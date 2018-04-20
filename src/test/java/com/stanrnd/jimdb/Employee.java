@@ -1,4 +1,4 @@
-package com.stanslab.jimdb;
+package com.stanrnd.jimdb;
 
 public class Employee {
 	

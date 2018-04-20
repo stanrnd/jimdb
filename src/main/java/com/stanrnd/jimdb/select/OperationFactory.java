@@ -1,8 +1,8 @@
-package com.stanslab.jimdb.select;
+package com.stanrnd.jimdb.select;
 
-import com.stanslab.jimdb.select.operation.AndOperation;
-import com.stanslab.jimdb.select.operation.EqualOperation;
-import com.stanslab.jimdb.select.operation.OrOperation;
+import com.stanrnd.jimdb.select.operation.AndOperation;
+import com.stanrnd.jimdb.select.operation.EqualOperation;
+import com.stanrnd.jimdb.select.operation.OrOperation;
 
 public class OperationFactory {
 	

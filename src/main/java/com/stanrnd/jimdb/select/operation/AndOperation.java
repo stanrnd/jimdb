@@ -1,10 +1,10 @@
-package com.stanslab.jimdb.select.operation;
+package com.stanrnd.jimdb.select.operation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.stanslab.jimdb.select.Operation;
-import com.stanslab.jimdb.select.OperationParam;
+import com.stanrnd.jimdb.select.Operation;
+import com.stanrnd.jimdb.select.OperationParam;
 
 public class AndOperation implements Operation {
 	

@@ -1,4 +1,4 @@
-package com.stanslab.jimdb.select;
+package com.stanrnd.jimdb.select;
 
 public enum Op {
 

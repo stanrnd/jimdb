@@ -1,15 +1,15 @@
-package com.stanslab.jimdb;
+package com.stanrnd.jimdb;
 
 import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.stanslab.jimdb.IndexConfig;
-import com.stanslab.jimdb.Table;
-import com.stanslab.jimdb.select.Filter;
-import com.stanslab.jimdb.select.LogOp;
-import com.stanslab.jimdb.select.Op;
+import com.stanrnd.jimdb.IndexConfig;
+import com.stanrnd.jimdb.Table;
+import com.stanrnd.jimdb.select.Filter;
+import com.stanrnd.jimdb.select.LogOp;
+import com.stanrnd.jimdb.select.Op;
 
 public class FindTest {
 	

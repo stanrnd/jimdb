@@ -1,4 +1,4 @@
-package com.stanslab.jimdb;
+package com.stanrnd.jimdb;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.TreeMap;
 
-import com.stanslab.jimdb.ds.JimdbTreeMap;
-import com.stanslab.jimdb.select.BSTFilterNode;
-import com.stanslab.jimdb.select.Filter;
-import com.stanslab.jimdb.select.Operation;
-import com.stanslab.jimdb.select.OperationFactory;
-import com.stanslab.jimdb.select.OperationParam;
+import com.stanrnd.jimdb.ds.JimdbTreeMap;
+import com.stanrnd.jimdb.select.BSTFilterNode;
+import com.stanrnd.jimdb.select.Filter;
+import com.stanrnd.jimdb.select.Operation;
+import com.stanrnd.jimdb.select.OperationFactory;
+import com.stanrnd.jimdb.select.OperationParam;
 
 public class Table<T> {
 	

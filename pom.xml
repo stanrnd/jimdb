@@ -2,14 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.stanslab.jimdb</groupId>
+	<groupId>com.stanrnd.jimdb</groupId>
 	<artifactId>jimdb</artifactId>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>jimdb</name>
 	<description>Java In Memory DataBase</description>
-	<url>http://github.com/stanslab/jimdb</url>
+	<url>http://github.com/stanrnd/jimdb</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -87,6 +87,10 @@
 						<goals>
 							<goal>sign</goal>
 						</goals>
+						<configuration>
+			              <keyname>${gpg.keyname}</keyname>
+			              <passphraseServerId>${gpg.keyname}</passphraseServerId>
+			            </configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -128,15 +132,15 @@
 		<developer>
 			<name>Stalin Jeyaraj</name>
 			<email>path2stalin@gmail.com</email>
-			<organization>Stans Lab</organization>
-			<organizationUrl>http://www.stanslab.com</organizationUrl>
+			<organization>Stan R&amp;D</organization>
+			<organizationUrl>http://www.stanrnd.com</organizationUrl>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/stanslab/jimdb.git</connection>
-		<developerConnection>scm:git:ssh://github.com:stanslab/jimdb.git</developerConnection>
-		<url>http://github.com/stanslab/jimdb/tree/master</url>
+		<connection>scm:git:git://github.com/stanrnd/jimdb.git</connection>
+		<developerConnection>scm:git:ssh://github.com:stanrnd/jimdb.git</developerConnection>
+		<url>http://github.com/stanrnd/jimdb/tree/master</url>
 	</scm>
 
 </project>

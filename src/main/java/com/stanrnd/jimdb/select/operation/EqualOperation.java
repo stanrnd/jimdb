@@ -1,12 +1,12 @@
-package com.stanslab.jimdb.select.operation;
+package com.stanrnd.jimdb.select.operation;
 
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.stanslab.jimdb.ds.JimdbTreeMap;
-import com.stanslab.jimdb.select.Operation;
-import com.stanslab.jimdb.select.OperationParam;
+import com.stanrnd.jimdb.ds.JimdbTreeMap;
+import com.stanrnd.jimdb.select.Operation;
+import com.stanrnd.jimdb.select.OperationParam;
 
 public class EqualOperation implements Operation {
 	

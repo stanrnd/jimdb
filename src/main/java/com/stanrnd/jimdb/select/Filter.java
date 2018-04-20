@@ -1,6 +1,6 @@
-package com.stanslab.jimdb.select;
+package com.stanrnd.jimdb.select;
 
-import com.stanslab.jimdb.select.Op;
+import com.stanrnd.jimdb.select.Op;
 
 public class Filter {
 	

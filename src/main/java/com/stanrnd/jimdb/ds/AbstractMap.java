@@ -1,4 +1,4 @@
-package com.stanslab.jimdb.ds;
+package com.stanrnd.jimdb.ds;
 
 import java.util.AbstractCollection;
 import java.util.AbstractSet;
