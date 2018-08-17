@@ -7,9 +7,9 @@ JIMDB is a lightweight Java In Memory DataBase where you can store any Java Bean
 
 ```
 <dependency>
-	<groupId>com.stanrnd.jimdb</groupId>
-	<artifactId>jimdb</artifactId>
-	<version>1.0</version>
+  <groupId>com.stanrnd.jimdb</groupId>
+  <artifactId>jimdb</artifactId>
+  <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 
